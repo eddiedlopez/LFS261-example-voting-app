@@ -1,4 +1,4 @@
 *.pyc
 project.lock.json
 bin/
-obj/
+jenkins-api-token.txt
