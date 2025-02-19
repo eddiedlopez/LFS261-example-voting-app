@@ -16,15 +16,21 @@ pipeline {
         }
         stage('test'){
             steps{
-                echo 'running unit tests on worker app'
-                }
+                echo 'Running Unit Tests on worker app...'
+                dir('worker'){
+                  sh 'mvn clean test'
+                  }
             }
         stage('package'){
             steps{
-                echo 'packaging worker app'
+                echo 'packaging worker app...'
+		dir('worker'){
+		  sh 'mvn package'
+	  	  }	
+                }
             }
         }
-    }
+   }   
     post{
         always{
             echo 'lding multibranch pipeline for worker is completed'
